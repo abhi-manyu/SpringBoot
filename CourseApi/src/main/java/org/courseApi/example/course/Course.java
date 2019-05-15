@@ -1,11 +1,15 @@
 package org.courseApi.example.course;
 
+import java.util.List;
+
+//import org.courseApi.example.student.Student;
 
 public class Course
 {
    private int courseId;
    private String courseName;
    private String courseDesc;
+   //private List<Student> students;
    
    public Course() {
 	// TODO Auto-generated constructor stub
@@ -35,5 +39,10 @@ public Course(int courseId, String courseName, String courseDesc) {
    public String getCourseDesc() {
 	return courseDesc;
 }
-   
+  /* public void setStudents(List<Student> students) {
+	this.students = students;
+}
+   public List<Student> getStudents() {
+	return students;
+}*/
 }

@@ -3,7 +3,11 @@ package org.courseApi.example.course;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,30 +19,30 @@ public class CourseController
 	@Autowired
 	private CourseService courseService;
 	
-	@RequestMapping(value="/courses")
+	@GetMapping(value="/courses")
     public List<Course> viewCourses()
     {
     	return courseService.getAllCourses();
     }
-	@RequestMapping(value="/courses/{id}")
+	@GetMapping(value="/courses/{id}")
     public Course viewCourse(@PathVariable int id)
     {
     	return courseService.getCourse(id);
     }
 	
-	@RequestMapping(value="/courses",method=RequestMethod.POST)
+	@PostMapping(value="/courses")
     public List<Course> addCourse(@RequestBody Course course)
     {
     	return courseService.addCourse(course);
     }
 	
-	@RequestMapping(value="/courses/{id}",method=RequestMethod.PUT)
+	@PutMapping(value="/courses/{id}")
 	public Course updateCourse(@RequestBody Course course, @PathVariable int id)
 	{
 		return courseService.updateCourse(id, course);
 	}
 	
-	@RequestMapping(value="/courses/{id}",method=RequestMethod.DELETE)
+	@DeleteMapping(value="/courses/{id}")
 	public List<Course> deleteCourse(@PathVariable int id)
 	{
 		return courseService.deleteCourse(id);

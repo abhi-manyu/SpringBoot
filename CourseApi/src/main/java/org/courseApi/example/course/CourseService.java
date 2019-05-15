@@ -4,17 +4,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+//import org.courseApi.example.student.Student;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CourseService
 {
-	//@Autowired
-	//private CourseData courseData;
-	
 	private static List<Course> courses=new ArrayList<>();
     static {
+    	/*List<Student> students1=new ArrayList<>();
+    	
+    	Student s1=new Student(111,"Bill hidick",24,"Los Angels",89.35);
+    	Student s2=new Student(222,"Thomas Robbin",27,"Queen city",56.85);
+    	Student s3=new Student(333,"Peter mask",25,"new Jersey",91.73);
+    	
+    	students1.add(s1);
+    	students1.add(s2);
+    	students1.add(s3);*/
+    	
 	   Course c1=new Course(101,"Spring","ragarding spring framework");
+	   //c1.setStudents(students1);
    	   Course c2=new Course(201,"Hibernate","ragarding java persistance framework");
    	   Course c3=new Course(301,"Webservice","ragarding inter app communuication");
    	 
@@ -25,12 +34,8 @@ public class CourseService
    
    public List<Course> getAllCourses()
    {
-	   /*List<Course> courses=new ArrayList<>();
-	   courseData.findAll().forEach(courses::add);
-	   return courses;*/
 	   
 	   return courses;
-	   
    }
    
    public Course getCourse(int course_Id)

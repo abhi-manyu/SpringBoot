@@ -1,10 +1,14 @@
 package org.SpringBoot_Rest.beans;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"capital","name","id"})
-@JsonIgnoreProperties({"id"})
+/*@JsonPropertyOrder({"capital","name","id"})
+@JsonIgnoreProperties({"id"})*/
+//@XmlRootElement
+//@JacksonXmlRootElement(localName="country")
 public class Country
 {
    private int id;
