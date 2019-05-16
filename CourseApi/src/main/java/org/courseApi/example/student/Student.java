@@ -1,4 +1,4 @@
-/*package org.courseApi.example.student;
+package org.courseApi.example.student;
 
 import java.util.Date;
 
@@ -68,4 +68,3 @@ public class Student
 	}
     
 }
-*/

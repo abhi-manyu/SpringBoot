@@ -1,15 +1,18 @@
 package org.courseApi.example.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
-//import org.courseApi.example.student.Student;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.courseApi.example.student.Student;
 
 public class Course
 {
    private int courseId;
    private String courseName;
    private String courseDesc;
-   //private List<Student> students;
+   private List<Student> students=new ArrayList<>();
    
    public Course() {
 	// TODO Auto-generated constructor stub
@@ -39,10 +42,11 @@ public Course(int courseId, String courseName, String courseDesc) {
    public String getCourseDesc() {
 	return courseDesc;
 }
-  /* public void setStudents(List<Student> students) {
+   public void setStudents(List<Student> students) {
 	this.students = students;
 }
+   @XmlTransient
    public List<Student> getStudents() {
 	return students;
-}*/
+}
 }
