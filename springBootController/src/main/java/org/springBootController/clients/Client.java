@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("org.springBootController.controllers")
+//@ComponentScan("org.springBootController.controllers")
 public class Client {
 
 	public static void main(String[] args) {
