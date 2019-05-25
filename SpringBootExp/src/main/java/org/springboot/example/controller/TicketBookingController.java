@@ -20,6 +20,7 @@ public class TicketBookingController
     @PostMapping(value="/create")
     public Ticket createTicket(@RequestBody Ticket ticket)
     {
+    	System.out.println("ticket created sucessfully");
     	return bookingService.createTicket(ticket);
     }
     
