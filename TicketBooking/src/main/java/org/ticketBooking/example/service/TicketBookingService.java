@@ -26,10 +26,23 @@ public class TicketBookingService
 	{
 		return ticketBookingRepo.findAll();
 	}
+	
+	public Ticket updateTicketDetails(int tick_Id,Ticket ticket)
+	{
+		Ticket temp_Tick=ticketBookingRepo.findOne(tick_Id);
+		if(temp_Tick!=null)
+		{
+			ticket.setTicket_Id(temp_Tick.getTicket_Id());
+			temp_Tick=ticket;
+			ticketBookingRepo.save(temp_Tick);
+		}
+		return ticket;
+	}
 
-	public void deleteTicketId(int id)
+	public Iterable<Ticket> deleteTicketId(int id)
 	{
 		ticketBookingRepo.delete(id);
+		return ticketBookingRepo.findAll();
 	}
 
 }

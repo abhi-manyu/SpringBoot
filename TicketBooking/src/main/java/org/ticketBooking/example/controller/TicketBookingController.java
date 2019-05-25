@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,9 +38,16 @@ public class TicketBookingController
     	return bookingService.getAllTickets();
     }
     
-    @DeleteMapping(value="/{ticketId}")
-    public void deleteTicket(@PathVariable("ticketId")int id)
+    @PutMapping(value="/{ticketId}")
+    public Ticket updateTicketDetails(@PathVariable("ticketId")int id,
+    		                          @RequestBody Ticket ticket)
     {
-    	bookingService.deleteTicketId(id);
+    	return bookingService.updateTicketDetails(id,ticket);
+    }
+    
+    @DeleteMapping(value="/{ticketId}")
+    public Iterable<Ticket> deleteTicket(@PathVariable("ticketId")int id)
+    {
+    	return bookingService.deleteTicketId(id);
     }
 }
