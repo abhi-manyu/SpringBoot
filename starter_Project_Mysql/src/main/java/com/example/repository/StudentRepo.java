@@ -11,4 +11,5 @@ import com.example.beans.Student;
 public interface StudentRepo extends CrudRepository<Student,Integer>
 {
    List<Student> findAllStudentByLname(String lname);
+   List<Student> findByFnameAndAddress(String fname, String address);
 }

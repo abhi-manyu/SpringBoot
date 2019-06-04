@@ -48,4 +48,18 @@ public class StudentService
    {
 	   return stdrepo.findAllStudentByLname(lname);
    }
+   
+   public List<Student> findStudentByFnameAndAddress(String fname, String address)
+   {
+	   return stdrepo.findByFnameAndAddress(fname, address);
+   }
+   
+   public Iterable<Student> deleteStudent(int del_Id)
+   {
+	   if(del_Id<0)
+		   stdrepo.deleteAll();
+	   else
+		   stdrepo.delete(del_Id);
+	   return stdrepo.findAll();
+   }
 }

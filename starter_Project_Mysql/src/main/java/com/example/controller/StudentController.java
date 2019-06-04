@@ -8,6 +8,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +29,15 @@ public class StudentController
    private StudentService stdserv;
    
    @GetMapping
-   public Iterable<Student> getAllStudents(@RequestParam(required=false)String lname)
+   public Iterable<Student> getAllStudents(@RequestParam(required=false)String fname,
+		   @RequestParam(required=false)String lname
+		   ,@RequestParam(required=false)String address)
    {
 	   /*List<Integer> li=new ArrayList<>();
 	   li.add(101);
 	   li.add(102);*/
+	   if(address!=null)
+		   return stdserv.findStudentByFnameAndAddress(fname, address);
 	   if(lname!=null)
 		   return stdserv.getStudentByLastName(lname);
 	   return stdserv.getAllStudent();
@@ -52,6 +57,12 @@ public class StudentController
    public Student updateStudent(@RequestBody Student student, @PathVariable("id")int id)
    {
 	  return stdserv.updateStudent(student, id);
+   }
+   
+   @DeleteMapping(value="/{id}")
+   public Iterable<Student> deleteStudent(@PathVariable("id")int id)
+   {
+	   return stdserv.deleteStudent(id);
    }
    
 }

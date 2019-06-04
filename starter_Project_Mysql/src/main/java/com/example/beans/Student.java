@@ -1,7 +1,12 @@
 package com.example.beans;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 public class Student
@@ -12,10 +17,12 @@ public class Student
    private String lname;
    private String mail;
    private String address;
+   private Date dob=new Date();
    public Student() {
 	// TODO Auto-generated constructor stub
    }
-public Student(int rln, String fname,String lname,String mail, String address) {
+public Student(int rln, String fname,String lname,String mail, String address)
+{
 	super();
 	this.rln = rln;
 	this.fname = fname;
@@ -53,5 +60,13 @@ public void setAddress(String address) {
 }
    public String getMail() {
 	return mail;
+}
+   public void setDob(Date dob)
+   {
+	  this.dob = dob;
+  }
+   @JsonSerialize(using=JsonDateSerializer.class)
+   public Date getDob() {
+	return dob;
 }
 }
