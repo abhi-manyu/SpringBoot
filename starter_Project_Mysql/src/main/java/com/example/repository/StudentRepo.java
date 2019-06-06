@@ -10,6 +10,6 @@ import com.example.beans.Student;
 @Repository
 public interface StudentRepo extends CrudRepository<Student,Integer>
 {
-   List<Student> findAllStudentByLname(String lname);
-   List<Student> findByFnameAndAddress(String fname, String address);
+   List<Student> readAllStudentByLname(String lname);
+   List<Student> findAllByFnameAndAddress(String fname, String address);
 }

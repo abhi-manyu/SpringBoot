@@ -46,12 +46,12 @@ public class StudentService
    
    public List<Student> getStudentByLastName(String lname)
    {
-	   return stdrepo.findAllStudentByLname(lname);
+	   return stdrepo.readAllStudentByLname(lname);
    }
    
    public List<Student> findStudentByFnameAndAddress(String fname, String address)
    {
-	   return stdrepo.findByFnameAndAddress(fname, address);
+	   return stdrepo.findAllByFnameAndAddress(fname, address);
    }
    
    public Iterable<Student> deleteStudent(int del_Id)
