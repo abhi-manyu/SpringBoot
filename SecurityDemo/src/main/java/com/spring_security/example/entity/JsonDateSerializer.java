@@ -16,7 +16,7 @@ public class JsonDateSerializer extends JsonSerializer<Date>
 {
 
 	private static final SimpleDateFormat datefmt=
-			  new SimpleDateFormat("dd-MM-yyyy");
+			  new SimpleDateFormat("yyyy-MM-dd");
 	public void serialize (Date date, JsonGenerator gen, SerializerProvider provider)
 			throws IOException, JsonProcessingException
 	{

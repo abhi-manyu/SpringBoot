@@ -14,10 +14,10 @@ public class Product_Service
     
     public Iterable<Product> getAllProducts()
     {
-    	Product p1=
+    	/*Product p1=
     			new Product(101,"Mobile",45000.00,"stephen Roger","Samsung Electronics","New Jersey",
     					"Paid(online payment mode)");
-    	prod_Repo.save(p1);
+    	prod_Repo.save(p1);*/
     	
     	return prod_Repo.findAll();
     }
