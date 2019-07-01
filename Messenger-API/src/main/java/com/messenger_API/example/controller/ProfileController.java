@@ -50,5 +50,9 @@ public class ProfileController
 	   return prof_Serv.delete_A_Messenger(id);
    }
    
-   
+   @RequestMapping(value="/{id}/messages")
+   public Message_Controller getMessageController()
+   {
+	   return new Message_Controller();
+   }
 }
