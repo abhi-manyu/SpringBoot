@@ -1,5 +1,7 @@
 package com.messenger_API.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.messenger_API.example.beans.Message;
 import com.messenger_API.example.beans.Profile;
 import com.messenger_API.example.service.Profile_Service;
 
@@ -50,9 +53,22 @@ public class ProfileController
 	   return prof_Serv.delete_A_Messenger(id);
    }
    
-   @RequestMapping(value="/{id}/messages")
-   public Message_Controller getMessageController()
+   @GetMapping(value="/{id}/messages")
+   public Iterable<Message> getMessageController(@PathVariable int id)
    {
-	   return new Message_Controller();
+	   return prof_Serv.gteAllMessages(id);
    }
+   
+   @PostMapping(value="/{id}/messages")
+   public Iterable<Message> add_a_Message(@PathVariable int id ,@RequestBody Message msg)
+   {
+	  return prof_Serv.add_a_Message(id, msg);
+   }
+   
+   @GetMapping(value="/{id}/messages/{mid}")
+   public Message getMessageController(@PathVariable int id, @PathVariable int mid)
+   {
+	   return prof_Serv.get_a_Message(id, mid);
+   }
+   
 }

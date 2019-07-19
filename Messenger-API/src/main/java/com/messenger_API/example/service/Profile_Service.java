@@ -1,8 +1,14 @@
 package com.messenger_API.example.service;
 
+import java.util.List;
+
+import javax.xml.ws.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.messenger_API.example.beans.ErrorMessage;
+import com.messenger_API.example.beans.Message;
 import com.messenger_API.example.beans.Profile;
 import com.messenger_API.example.repository.Profile_Repository;
 
@@ -43,4 +49,32 @@ public class Profile_Service
 		prof_Repo.delete(id);
 		return prof_Repo.findAll();
 	}
+	
+	public Iterable<Message> gteAllMessages(int id)
+	{
+		Profile pf=prof_Repo.findOne(id);
+		return pf.getMessages();
+	}
+	
+	public Iterable<Message> add_a_Message(int id, Message msg)
+	{
+		Profile pf=prof_Repo.findOne(id);
+		List<Message> messages=pf.getMessages();
+		messages.add(msg);
+		prof_Repo.save(pf);
+		return pf.getMessages();
+	}
+	
+	public Message get_a_Message(int id, int mid)
+	{
+		Profile pf=prof_Repo.findOne(id);
+		List<Message> messages=pf.getMessages();
+		for(Message msg: messages)
+		{
+			if(msg.getMsg_Id()==mid)
+				return msg;
+		}
+		return null;
+	}
+	
 }

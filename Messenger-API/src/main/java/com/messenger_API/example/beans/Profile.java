@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -27,7 +29,7 @@ public class Profile
    private String address;
    private String mail;
    
-   @ElementCollection
+   @OneToMany(cascade=CascadeType.ALL)
    private List<Message> messages=new ArrayList<>();
    
    public Profile() {
