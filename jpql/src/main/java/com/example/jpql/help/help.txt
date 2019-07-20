@@ -1,0 +1,54 @@
+here first we are inserting lots of records by @Post method i.e
+
+[
+    {"id": 101,"name": "Abhimanyu","address": "Bangalore"},
+    {"id": 202,"name": "Arabinda","address": "Bhubaneswar"},
+    {"id": 303,"name": "Anshuraj","address": "kolkata"},
+    {"id": 404,"name": "Ashok","address": "kolkata"},
+    {"id": 505,"name": "Smita","address": "kolkata"}
+] 
+
+--- here last 3 elemets are of having same address as kolkata.
+----- so if we will fetch these eleements by using simple method like
+     ( public List<Student> findByAddress(String address);    ), then the result will be like bellow
+     
+     result -:
+        the result will be like incrresing order of their primary key i.e id.
+     {
+        {"id": 303,"name": "Smita","address": "kolkata"},
+        {"id": 404,"name": "Ashok","address": "kolkata"},
+        {"id": 505,"name": "Anshuraj","address": "kolkata"
+     }
+        
+---- but if we want to retrive the records in descending order by their name ,
+     those who are living in kolkata.
+     
+     so for that the sql specific query is : 
+     
+        select * from student s where s.address="kolkata" ordered by s.name desc ;     
+        
+    
+    
+------if we want to achive that same thing by using @Query annotation i.e JPQL , then we should
+    write as follows like--:
+    
+       @Query(value="from Student where address=?1 order by name desc")
+	   public List<Student> find_By_Address_in_SortedManner_By_Name(String address);
+    
+    ----- here we have used pojo specific variables rather than database table specific column name.
+    i.e -:
+       pojo property          column in db.table
+-----------------------------------------------------------
+          id-----------------member_id
+          name---------------member_name
+          address------------member_address
+          age----------------member_age
+          status-------------member_martal_status
+    
+    
+ NOTE------:
+      Here all the variables used in the @Query is POJO class specific not database or table specific
+        
+        
+        
+        

@@ -16,8 +16,8 @@ public class StudentService {
 	
 	public List<Student> getAllStudents()
 	{
-		Student st1=new Student(101,"Abhimanyu","Bangalore");
-		Student st2=new Student(202,"Arabinda","Bhubaneswar");
+		Student st1=new Student(101,"Abhimanyu","Bangalore",25,"unmiarried");
+		Student st2=new Student(202,"Arabinda","Bhubaneswar",20,"unmiarried");
 		 srepo.save(st1);
 		 srepo.save(st2);
 		
@@ -32,8 +32,8 @@ public class StudentService {
 	
 	public List<Student> findByAddress(String address)
 	{
-		return srepo.findByAddress(address);
-				
+		return srepo.find_By_Address_in_SortedManner_By_Name(address);
+	    //return srepo.findByAddress(address);	
 	}
 	
 }
