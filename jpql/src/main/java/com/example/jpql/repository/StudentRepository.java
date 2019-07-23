@@ -13,6 +13,9 @@ public interface StudentRepository extends JpaRepository<Student,Integer>
 {
      //public List<Student> findByAddress(String address);
 	
-	@Query(value="from Student where address=?1 order by name desc")
+	@Query(value="from Student where address=?1 order by age desc")
 	public List<Student> find_By_Address_in_SortedManner_By_Name(String address);
+	
+	@Query(value="from Student order by age desc")
+	public List<Student> getAllStudents_by_Sortingmanner();
 }

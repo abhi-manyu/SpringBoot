@@ -51,4 +51,14 @@ here first we are inserting lots of records by @Post method i.e
         
         
         
+----added Jsp support for MVC architecture for jsp rendering. so to achive that support we need to 
+    add tomcat embed jasper jar.
+----retrive one single element from service class and then in controller method create  model object
+   and then add  that object in that modelAndView object and then return.
+----for JSP rendering in application.properties file , write
+   
+           spring.mvc.view.prefix=/WEB-INF/outputs/
+           spring.mvc.view.suffix = .jsp
+      
+
         
