@@ -3,6 +3,7 @@ package com.example.jpql.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.example.jpql.beans.Student;
@@ -14,6 +15,7 @@ public class StudentService {
 	@Autowired
 	private StudentRepository srepo;
 	
+	@Scheduled(initialDelay=1000, fixedRate=10000)
 	public List<Student> getAllStudents()
 	{
 		System.out.println("creating students");
@@ -22,7 +24,12 @@ public class StudentService {
 		 srepo.save(st1);
 		 srepo.save(st2);
 		
-		return srepo.findAll();
+		 List<Student> students= srepo.findAll();
+		 for(Student student:students)
+		   {
+			   System.out.println(student.getName());
+		   }
+		 return students;
 	}
 	
 	public List<Student> add_a_Student(Student student)

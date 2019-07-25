@@ -3,6 +3,7 @@ package com.example.jpql.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,10 @@ public class StudentController
    {
 	   System.out.println("in controller");
 	   if(sorted==false)
-	       return serv.getAllStudents();
+	   {
+		   List<Student> students=serv.getAllStudents();
+	       return students;
+	   }
 	   else
 		   return serv.getAllStudentBySorted();
    }
