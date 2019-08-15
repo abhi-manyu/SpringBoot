@@ -1,5 +1,0 @@
-org\ticketBooking\example\Client.class
-org\ticketBooking\example\service\TicketBookingService.class
-org\ticketBooking\example\controller\TicketBookingController.class
-org\ticketBooking\example\repository\TicketBookingRepo.class
-org\ticketBooking\example\beans\Ticket.class
