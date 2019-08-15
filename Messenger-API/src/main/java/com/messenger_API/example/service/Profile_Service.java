@@ -2,12 +2,9 @@ package com.messenger_API.example.service;
 
 import java.util.List;
 
-import javax.xml.ws.Response;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.messenger_API.example.beans.ErrorMessage;
 import com.messenger_API.example.beans.Message;
 import com.messenger_API.example.beans.Profile;
 import com.messenger_API.example.repository.Profile_Repository;
@@ -54,6 +51,7 @@ public class Profile_Service
 	{
 		Profile pf=prof_Repo.findOne(id);
 		return pf.getMessages();
+		
 	}
 	
 	public Iterable<Message> add_a_Message(int id, Message msg)

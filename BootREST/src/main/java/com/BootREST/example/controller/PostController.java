@@ -38,6 +38,7 @@ public class PostController {
 	@PostMapping
 	public Iterable<Post> addPost(@RequestBody Post post)
 	{
+		System.out.println("posted date is : "+post.getPosted_Date());
 		return poser.addPost(post);
 	}
 	
