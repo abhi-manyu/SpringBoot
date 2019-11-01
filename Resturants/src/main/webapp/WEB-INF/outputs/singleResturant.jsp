@@ -13,6 +13,7 @@
     name : ${resturant.resturant_Name}<br>
     woner name : ${resturant.resturant_Woner}<br>
     Address : ${resturant.resturant_Address}<br>
+    rating : ${resturant.rating}<br>
     established date : ${resturant.estd_Date}
 </body>
 </html>

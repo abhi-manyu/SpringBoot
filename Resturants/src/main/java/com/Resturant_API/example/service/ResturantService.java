@@ -1,5 +1,6 @@
 package com.Resturant_API.example.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class ResturantService
     public Resturant getById(int resturantId)
     {
     	return restRepo.getById(resturantId);
+    }
+    
+    public Resturant updateResturant(Resturant resturant,int rest_Id)
+    {
+    	Resturant rest = restRepo.findOne(rest_Id);
+    	rest.setResturant_Name(resturant.getResturant_Name());
+    	rest.setResturant_Address(resturant.getResturant_Address());
+    	rest.setResturant_Woner(resturant.getResturant_Woner());
+    	rest.setRating(resturant.getRating());
+    	rest.setEstd_Date(resturant.getEstd_Date());
+    	restRepo.save(rest);
+    	return rest;
     }
 }
