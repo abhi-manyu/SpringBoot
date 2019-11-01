@@ -15,7 +15,7 @@ public class StudentService {
 	@Autowired
 	private StudentRepository srepo;
 	
-	@Scheduled(initialDelay=1000, fixedRate=10000)
+/*	@Scheduled(initialDelay=1000, fixedRate=10000)*/
 	public List<Student> getAllStudents()
 	{
 		System.out.println("creating students");

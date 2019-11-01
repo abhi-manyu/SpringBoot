@@ -7,7 +7,7 @@ import com.messenger_API.example.beans.Message;
 import com.messenger_API.example.repository.MessageRepository;
 
 @Service
-public class MessageService
+public class MessageService 
 {
 	@Autowired
     private MessageRepository  msg_repo;
@@ -15,8 +15,9 @@ public class MessageService
 	public Iterable<Message> getAllMessages()
 	{
 		
-		Message msg1=new Message(101,"Hello world","abhimanyu","arabinda");
+		/*Message msg1=new Message(101,"Hello world","abhimanyu","arabinda");
 		msg_repo.save(msg1);
+		System.out.println("in service, data is saved to database");*/
 		return msg_repo.findAll();
 	}
 	

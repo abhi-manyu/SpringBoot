@@ -87,9 +87,45 @@ public class CourseService
    
    
    
+   public List<Student> getAllStudents(int id)
+   {
+	   List<Student> students = new ArrayList<>();
+	   for(Course course : courses)
+	   {
+		   if(id == course.getCourseId())
+		   {
+			   students = course.getStudents();
+			   return students;
+		   }
+	   }
+	   return students;
+   }
    
+   public Student get_a_Student(int cid, int sid){
+	   List<Student> students = new ArrayList<>();
+	   for(Course course : courses){
+		   if(cid == course.getCourseId()){
+			   students = course.getStudents();
+			   for(Student st : students){
+				   if(sid == st.getRollNo())
+					   return st;
+			   }
+		   }
+	   }
+	   return null; 
+  }
    
-   
+   public List<Student> add_a_Student(int cid, Student st)
+   {
+	   List<Student> students = new ArrayList<>();
+	   for(Course course : courses) {
+		   if(cid ==course.getCourseId()) {
+			   course.getStudents().add(st);
+			   return students;
+		   }
+	   }
+	   return new ArrayList<>();
+   }
    
    
    

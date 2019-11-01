@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: SpringBootExp Maven Webapp
+Implementation-Title: CourseApi
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: abhimanyum
 Implementation-Vendor-Id: org
 Build-Jdk: 1.8.0_192
-Implementation-URL: http://maven.apache.org
+Implementation-URL: http://projects.spring.io/spring-boot/CourseApi/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

@@ -1,6 +1,7 @@
 package com.messenger_API.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messenger_API.example.beans.Message;
 import com.messenger_API.example.service.MessageService;
 
+//@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"},maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping(value="/messages")
+@RequestMapping({"/messages"})
 public class Message_Controller
 {
     @Autowired
@@ -23,6 +26,7 @@ public class Message_Controller
     @GetMapping
     public Iterable<Message> getAllMessages()
     {
+    	System.out.println("in controller");
     	return msg_Serv.getAllMessages();
     }
     

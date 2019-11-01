@@ -19,12 +19,12 @@ public class PostService {
 	
 	public Iterable<Post> getAllPosts()
 	{
-		/*Post po1=new Post(101,"this is the first post","steve roger");
+		Post po1=new Post(101,"this is the first post","steve roger");
 		List<Comment> comments=new ArrayList<>();
 		comments.add(new Comment(111,"this is the first comment","Haward bruce"));
 		comments.add(new Comment(222,"this is the second comment","hammer bryan"));
 		po1.setComments(comments);
-		pore.save(po1);*/
+		pore.save(po1);
 		return pore.findAll();
 	}
 	
