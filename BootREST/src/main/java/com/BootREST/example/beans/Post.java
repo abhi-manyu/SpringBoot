@@ -21,7 +21,6 @@ public class Post
    private String post;
    private String poster_Name;
    
-   @javax.persistence.Transient
    private Date posted_Date;
    
    @OneToMany(cascade=CascadeType.ALL)

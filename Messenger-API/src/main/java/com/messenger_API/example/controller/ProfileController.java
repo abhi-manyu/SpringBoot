@@ -45,7 +45,7 @@ public class ProfileController
 	  return prof_Serv.updateMessenger(id, prof);
    }
    
-   @DeleteMapping(value="/id")
+   @DeleteMapping(value="/{id}")
    public Iterable<Profile> delete_A_Messenger(@PathVariable int id)
    {
 	   return prof_Serv.delete_A_Messenger(id);

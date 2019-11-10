@@ -17,9 +17,11 @@ public class Profile_Service
 	
 	public Iterable<Profile> getAllMessengers()
 	{
+		System.out.println("profile adding");
 		Profile prf = new Profile(101,"steve","Roger","i_steve@Roger",
 		 		            "Steve#Roger",45,"NewYork","steve@roger@avengers.com");
 		prof_Repo.save(prf);
+		System.out.println("profile added successfully");
 		return prof_Repo.findAll();
 	}
 	

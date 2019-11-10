@@ -4,9 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 public class Comment {
@@ -15,7 +14,6 @@ public class Comment {
 	private int cid;
 	private String comment;
 	private String prof_Name;
-	@Transient
 	private Date commrnt_Date;
 	
 	public Comment() {
@@ -43,6 +41,7 @@ public class Comment {
 	public void setCommrnt_Date(Date commrnt_Date) {
 		this.commrnt_Date = commrnt_Date;
 	}
+	@JsonSerialize(using=JsonDateSerializer.class)
 	public Date getCommrnt_Date() {
 		return commrnt_Date;
 	}
