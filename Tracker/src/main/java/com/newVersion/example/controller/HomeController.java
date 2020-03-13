@@ -1,5 +1,6 @@
 package com.newVersion.example.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,21 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.newVersion.example.entities.CoronaVirusData;
-import com.newVersion.example.service.CoronaTrackingService;
+import com.newVersion.example.entities.VirusData;
+import com.newVersion.example.service.TrackingService;
 
 @RestController
 public class HomeController {
 
 	@Autowired
-	CoronaTrackingService service;
+	TrackingService service;
 	
 	@GetMapping("/")
 	public ModelAndView home(Model mod)
 	{
-		List<CoronaVirusData> alldata = service.getMyDatas();
+		List<VirusData> alldata = new ArrayList<>(service.getMyDatas());
 		int sum=0;
-		Iterator<CoronaVirusData> itr = alldata.iterator();
+		Iterator<VirusData> itr = alldata.iterator();
 		while(itr.hasNext())
 		{
 			sum+=itr.next().getTotal_as_of_Now();
