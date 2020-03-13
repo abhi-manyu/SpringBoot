@@ -57,4 +57,6 @@ public class StudentController
 	   mod.addObject("student",serv.find_a_Student(id));
 	   return mod;
    }
+   
+   
 }

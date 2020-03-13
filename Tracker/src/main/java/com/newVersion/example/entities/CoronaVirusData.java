@@ -40,6 +40,6 @@ public class CoronaVirusData {
 	
 	@Override
 	public String toString() {
-		return country+"\t"+state+"\t"+total_as_of_Now;
+		return country+"\t----------->"+state+"\t------------>"+total_as_of_Now;
 	}
 }

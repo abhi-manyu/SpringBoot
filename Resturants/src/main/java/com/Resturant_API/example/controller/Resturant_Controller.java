@@ -33,12 +33,12 @@ public class Resturant_Controller
     }
     
     @GetMapping(value="/{restId}")
-    public Resturant getAResturant(@PathVariable int restId,Model mod)
+    public ModelAndView getAResturant(@PathVariable int restId,Model mod)
     {
     	
     	mod.addAttribute("resturant", restService.getById(restId));
-    	//return new ModelAndView("singleResturant");
-    	return restService.getById(restId);
+    	return new ModelAndView("singleResturant");
+    	//return restService.getById(restId);
     }
     
     @PostMapping

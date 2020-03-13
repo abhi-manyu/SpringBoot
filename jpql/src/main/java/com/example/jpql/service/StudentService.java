@@ -23,7 +23,7 @@ public class StudentService {
 		Student st2=new Student(202,"Arabinda","Bhubaneswar",20,"unmiarried");
 		 srepo.save(st1);
 		 srepo.save(st2);
-		
+		 
 		 List<Student> students= srepo.findAll();
 		 for(Student student:students)
 		   {

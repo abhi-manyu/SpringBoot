@@ -1,8 +1,6 @@
 package com.newVersion.example.service;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +25,18 @@ public class CoronaTrackingService
 {
     private String virus_Data = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
     
-    private List<CoronaVirusData> allDatas = new ArrayList<>();
+    private List<CoronaVirusData> myDatas = new ArrayList<>();
+    public List<CoronaVirusData> getMyDatas() {
+		return myDatas;
+	}
     
     @PostConstruct
     @Scheduled(cron="* * 1 * * *")
     public void fetchVirusData() throws IOException
     {
-    	List<CoronaVirusData> myDatas = new ArrayList<>();
+    	List<CoronaVirusData> allDatas = new ArrayList<>();
+    	
+    	
     	
     	HttpClient httpClient = HttpClients.createDefault();
     	HttpGet request = new HttpGet(virus_Data);
@@ -46,19 +49,11 @@ public class CoronaTrackingService
     	Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
     	for (CSVRecord record : records)
     	{
-    		/*CoronaVirusData data = 
-    				new CoronaVirusData(record.get("Country/Region"),
-    						record.get("Province/State"), */
-    		//int total_affected = Integer.parseInt(record.get(record.size()-1));
     		CoronaVirusData data = new CoronaVirusData(record.get("Country/Region"),record.get("Province/State"),Integer.parseInt(record.get(record.size()-1)));
-    	    System.out.println(data);
+    	    allDatas.add(data);
     	}
     	
-    	
-    	
-    	
-    	
-    	
+    	myDatas = allDatas;
     	
     }
 }

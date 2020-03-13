@@ -18,4 +18,6 @@ public interface StudentRepository extends JpaRepository<Student,Integer>
 	
 	@Query(value="from Student order by age desc")
 	public List<Student> getAllStudents_by_Sortingmanner();
+	
+	
 }
