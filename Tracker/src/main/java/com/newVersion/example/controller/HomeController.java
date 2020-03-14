@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.newVersion.example.entities.VirusData;
-import com.newVersion.example.service.TrackingService;
+import com.newVersion.example.entities.CoronaVirusData;
+import com.newVersion.example.service.CoronaTrackingService;
 
 @RestController
 public class HomeController {
 
 	@Autowired
-	TrackingService service;
+	CoronaTrackingService service;
 	
 	@GetMapping("/")
 	public ModelAndView home(Model mod)
 	{
-		List<VirusData> alldata = new ArrayList<>(service.getMyDatas());
+		List<CoronaVirusData> alldata = new ArrayList<>(service.getMyDatas());
 		int sum=0;
-		Iterator<VirusData> itr = alldata.iterator();
+		Iterator<CoronaVirusData> itr = alldata.iterator();
 		while(itr.hasNext())
 		{
-			sum+=itr.next().getTotal_as_of_Now();
+			sum+=itr.next().getTotal_Confirmed_Cases();
 		}
 		mod.addAttribute("alldata", service.getMyDatas());
 		mod.addAttribute("total",sum);

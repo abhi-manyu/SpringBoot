@@ -30,7 +30,9 @@ h2 {
 				<tr>
 					<th class="th-sm">Country</th>
 					<th class="th-sm">States</th>
-					<th class="th-sm">total no of cases</th>
+					<th class="th-sm">total confirmed cases</th>
+					<th class="th-sm">total Deaths</th>
+					<th class="th-sm">total Recovered</th>
 				</tr>
 			<thead>
 			<tbody>
@@ -38,7 +40,9 @@ h2 {
 					<tr id="data">
 						<td><c:out value="${data.country}" /></td>
 						<td><c:out value="${data.state}" /></td>
-						<td><c:out value="${data.total_as_of_Now}" /></td>
+						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
+						<td><c:out value="${data.total_Deaths}" /></td>
+						<td><c:out value="${data.total_Recovered}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>

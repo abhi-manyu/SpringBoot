@@ -2,6 +2,8 @@ package com.newVersion.example.service;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +20,15 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.newVersion.example.entities.VirusData;
+import com.newVersion.example.entities.CoronaVirusData;
 
 @Service
-public class TrackingService
+public class CoronaTrackingService
 {
-    private String virus_Data = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
-    
-    private List<VirusData> myDatas = new ArrayList<>();
-    public List<VirusData> getMyDatas() {
+    String url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/";
+	
+    private List<CoronaVirusData> myDatas = new ArrayList<>();
+    public List<CoronaVirusData> getMyDatas() {
 		return myDatas;
 	}
     
@@ -34,23 +36,29 @@ public class TrackingService
     @Scheduled(cron="* * 1 * * *")
     public void fetchVirusData() throws IOException
     {
-    	List<VirusData> allDatas = new ArrayList<>();
-    	
-    	
+    	List<CoronaVirusData> allDatas = new ArrayList<>();
     	
     	HttpClient httpClient = HttpClients.createDefault();
-    	HttpGet request = new HttpGet(virus_Data);
+    	
+    	DateTimeFormatter dft = DateTimeFormatter.ofPattern("MM-dd-yyy");
+	    LocalDateTime now = LocalDateTime.now().minusDays(1);
+	    url +=dft.format(now)+".csv";
+	    
+    	HttpGet request = new HttpGet(url);
     	HttpResponse  response = httpClient.execute(request);
     	HttpEntity entity = response.getEntity();
-    	//System.out.println(EntityUtils.toString(entity));
     	
     	StringReader csvreader = new StringReader(EntityUtils.toString(entity));
     	
     	Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
     	for (CSVRecord record : records)
     	{
-    		VirusData data = new VirusData(record.get("Country/Region"),record.get("Province/State"),Integer.parseInt(record.get(record.size()-1)));
-    	    allDatas.add(data);
+    		CoronaVirusData cv_Data = 
+		    		 new CoronaVirusData(record.get("Country/Region"), record.get(record.size()-8),
+		    				 Integer.parseInt(record.get(record.size()-5)),Integer.parseInt(record.get(record.size()-4)),
+		    				 Integer.parseInt(record.get(record.size()-3)));
+		    		
+    		allDatas.add(cv_Data);
     	}
     	
     	myDatas = allDatas;
