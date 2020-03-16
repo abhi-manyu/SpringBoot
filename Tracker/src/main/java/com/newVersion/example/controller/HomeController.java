@@ -36,8 +36,6 @@ public class HomeController {
 			deaths+=temp.getTotal_Deaths();
 		}
 		
-        System.out.println("total no of affetcted is : "+sum);
-        
 		mod.addAttribute("alldata", alldata);
 		mod.addAttribute("total", sum);
 		mod.addAttribute("tot_death",deaths);

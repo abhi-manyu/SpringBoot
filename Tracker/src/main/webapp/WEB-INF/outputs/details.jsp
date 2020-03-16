@@ -39,16 +39,18 @@ h1 {
 .death{
    float: right;
    color: red;
+   margin-right: 10px;
 }
+
 </style>
 </head>
 <body>
 	<h1>Tracking</h1>
 	<div class="conf">
-	     <h3>Total confirmed cases: ${ total }</h3>
+	     <h4>Total confirmed cases: ${ total }</h4>
 	</div>
 	<div class="death">
-	     <h3>Total deaths : ${ tot_death }</h3>
+	     <h4>Total deaths : ${ tot_death }</h4>
 	</div>
 	<div class="container">
 		<table id="myTable"

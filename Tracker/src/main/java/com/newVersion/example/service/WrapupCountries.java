@@ -46,8 +46,10 @@ public class WrapupCountries {
 		url += dft.format(now) + ".csv";
 
 		HttpGet request = new HttpGet(url);
+		
 		HttpResponse response = httpClient.execute(request);
 		HttpEntity entity = response.getEntity();
+		
 
 		StringReader csvreader = new StringReader(EntityUtils.toString(entity));
 

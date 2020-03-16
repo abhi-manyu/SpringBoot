@@ -37,7 +37,8 @@ public class CoronaTrackingService {
 	@PostConstruct
 
 	@Scheduled(cron = "* * 1 * * *")
-	public void fetchVirusData() throws IOException {
+	public void fetchVirusData() throws IOException
+	{
 		List<CoronaVirusData> allDatas = new ArrayList<>();
 
 		HttpClient httpClient = HttpClients.createDefault();
@@ -47,10 +48,22 @@ public class CoronaTrackingService {
 		url += dft.format(now) + ".csv";
 
 		HttpGet request = new HttpGet(url);
-		HttpResponse response = httpClient.execute(request);
+		String file=null;
+		HttpResponse response=null;
+		try
+		{
+		response = httpClient.execute(request);
+		System.out.println("status code is :"+response.getStatusLine().getStatusCode());
 		HttpEntity entity = response.getEntity();
+		file = EntityUtils.toString(entity);
+		}
+		catch(Exception e)
+		{
+			System.out.println("status code is :"+response.getStatusLine().getStatusCode());
+			System.out.println("can not execute");
+		}
 
-		StringReader csvreader = new StringReader(EntityUtils.toString(entity));
+		StringReader csvreader = new StringReader(file);
 
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
 		for (CSVRecord record : records) {
