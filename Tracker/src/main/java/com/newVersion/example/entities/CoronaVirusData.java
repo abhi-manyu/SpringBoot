@@ -3,17 +3,15 @@ package com.newVersion.example.entities;
 public class CoronaVirusData {
 
 	private String country;
-	private String state;
 	private int total_Confirmed_Cases;
 	private int total_Deaths;
 	private int total_Recovered;
 	
 
-	public CoronaVirusData(String country, String state, int total_Confirmed_Cases, int total_Deaths,
+	public CoronaVirusData(String country,int total_Confirmed_Cases, int total_Deaths,
 			int total_Recovered) {
 		super();
 		this.country = country;
-		this.state = state;
 		this.total_Confirmed_Cases = total_Confirmed_Cases;
 		this.total_Deaths = total_Deaths;
 		this.total_Recovered = total_Recovered;
@@ -25,14 +23,6 @@ public class CoronaVirusData {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public void setTotal_Confirmed_Cases(int total_Confirmed_Cases) {
@@ -58,7 +48,7 @@ public class CoronaVirusData {
     
 	@Override
 	public String toString() {
-		return country+"\t----------->"+state+"\t------------>"+total_Confirmed_Cases+
-				"\t------------>"+total_Deaths+"------------->"+total_Recovered;
+		return "["+country+"\t"+total_Confirmed_Cases+"\t"+total_Deaths+
+				"\t"+total_Recovered+"]";
 	}
 }

@@ -12,25 +12,37 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.newVersion.example.entities.CoronaVirusData;
 import com.newVersion.example.service.CoronaTrackingService;
+import com.newVersion.example.service.WrapupCountries;
 
 @RestController
 public class HomeController {
 
 	@Autowired
-	CoronaTrackingService service;
-	
+	WrapupCountries service;
+
 	@GetMapping("/")
 	public ModelAndView home(Model mod)
 	{
-		List<CoronaVirusData> alldata = new ArrayList<>(service.getMyDatas());
-		int sum=0;
+		List<CoronaVirusData> alldata = new ArrayList<>(service.getMyDatas().values());
+
+		int sum = 0;
+		int deaths=0;
+		CoronaVirusData temp=null;
 		Iterator<CoronaVirusData> itr = alldata.iterator();
-		while(itr.hasNext())
+		while (itr.hasNext())
 		{
-			sum+=itr.next().getTotal_Confirmed_Cases();
+			temp = itr.next();
+			sum += temp.getTotal_Confirmed_Cases();
+			deaths+=temp.getTotal_Deaths();
 		}
-		mod.addAttribute("alldata", service.getMyDatas());
-		mod.addAttribute("total",sum);
+		
+        System.out.println("total no of affetcted is : "+sum);
+        
+		mod.addAttribute("alldata", alldata);
+		mod.addAttribute("total", sum);
+		mod.addAttribute("tot_death",deaths);
+
 		return new ModelAndView("details");
+	    //return null;
 	}
 }

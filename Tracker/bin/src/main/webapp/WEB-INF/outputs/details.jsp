@@ -25,37 +25,24 @@
 	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <style>
 th {
-	color: #6011B9;
+	color: red;
 	font-size: 20px;
 	background-color: #b3ffcc; 
 }
-h1 {
+h2 {
 	text-align: center;
-}
-
-.conf{
-   float: left;
-}
-.death{
-   float: right;
-   color: red;
 }
 </style>
 </head>
 <body>
-	<h1>Tracking</h1>
-	<div class="conf">
-	     <h3>Total confirmed cases: ${ total }</h3>
-	</div>
-	<div class="death">
-	     <h3>Total deaths : ${ tot_death }</h3>
-	</div>
+	<h2>Tracking (Total cases reported through out world are : ${ total })</h2>
 	<div class="container">
 		<table id="myTable"
 			class="table table-striped table-bordered table-sm myTable">
 			<thead>
 				<tr>
 					<th class="th-sm">Country</th>
+					<th class="th-sm">States</th>
 					<th class="th-sm">total confirmed cases</th>
 					<th class="th-sm">total Deaths</th>
 					<th class="th-sm">total Recovered</th>
@@ -65,6 +52,7 @@ h1 {
 				<c:forEach var="data" items="${alldata}">
 					<tr id="data">
 						<td><c:out value="${data.country}" /></td>
+						<td><c:out value="${data.state}" /></td>
 						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
 						<td><c:out value="${data.total_Deaths}" /></td>
 						<td><c:out value="${data.total_Recovered}" /></td>

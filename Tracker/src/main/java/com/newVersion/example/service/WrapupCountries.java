@@ -1,4 +1,3 @@
-
 package com.newVersion.example.service;
 
 import java.io.IOException;
@@ -8,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -25,17 +25,16 @@ import org.springframework.stereotype.Service;
 import com.newVersion.example.entities.CoronaVirusData;
 
 @Service
-public class CoronaTrackingService {
+public class WrapupCountries {
 	String url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/";
 
-	private List<CoronaVirusData> myDatas = new ArrayList<>();
+	private Map<String, CoronaVirusData> myDatas = new HashMap<String, CoronaVirusData>();
 
-	public List<CoronaVirusData> getMyDatas() {
+	public Map<String, CoronaVirusData> getMyDatas() {
 		return myDatas;
 	}
 
 	@PostConstruct
-
 	@Scheduled(cron = "* * 1 * * *")
 	public void fetchVirusData() throws IOException {
 		List<CoronaVirusData> allDatas = new ArrayList<>();
@@ -53,15 +52,28 @@ public class CoronaTrackingService {
 		StringReader csvreader = new StringReader(EntityUtils.toString(entity));
 
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
-		for (CSVRecord record : records) {
+		for (CSVRecord record : records)
+		{
 			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country/Region"),
 					Integer.parseInt(record.get(record.size() - 5)), Integer.parseInt(record.get(record.size() - 4)),
 					Integer.parseInt(record.get(record.size() - 3)));
 
 			allDatas.add(cv_Data);
 		}
+        
 
-		myDatas = allDatas;
+		for (CoronaVirusData data : allDatas) {
+			if (myDatas.containsKey(data.getCountry())) {
+				CoronaVirusData temp = myDatas.get(data.getCountry());
+				temp.setTotal_Confirmed_Cases(temp.getTotal_Confirmed_Cases() + data.getTotal_Confirmed_Cases());
+				temp.setTotal_Deaths(temp.getTotal_Deaths() + data.getTotal_Deaths());
+				temp.setTotal_Recovered(temp.getTotal_Recovered() + data.getTotal_Recovered());
+				myDatas.put(data.getCountry(), temp);
+
+			}
+			else
+				myDatas.put(data.getCountry(), data);
+		}
 
 	}
 }

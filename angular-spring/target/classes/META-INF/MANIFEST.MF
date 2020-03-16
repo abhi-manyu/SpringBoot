@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: angularCrud
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: abhimanyum
+Built-By: Abhimanyu
 Implementation-Vendor-Id: com.javainuse
-Build-Jdk: 1.8.0_192
+Build-Jdk: 1.8.0_241
 Implementation-URL: http://projects.spring.io/spring-boot/angular-spri
  ng/
 Created-By: Maven Integration for Eclipse
