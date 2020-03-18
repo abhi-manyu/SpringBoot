@@ -27,30 +27,31 @@
 th {
 	color: #6011B9;
 	font-size: 20px;
-	background-color: #b3ffcc; 
+	background-color: #b3ffcc;
 }
+
 h1 {
 	text-align: center;
 }
 
-.conf{
-   float: left;
-}
-.death{
-   float: right;
-   color: red;
-   margin-right: 10px;
+.conf {
+	float: left;
 }
 
+.death {
+	float: right;
+	color: red;
+	margin-right: 10px;
+}
 </style>
 </head>
 <body>
 	<h1>Tracking</h1>
 	<div class="conf">
-	     <h4>Total confirmed cases: ${ total }</h4>
+		<h4>Total confirmed cases: ${ total }</h4>
 	</div>
 	<div class="death">
-	     <h4>Total deaths : ${ tot_death }</h4>
+		<h4>Total deaths : ${ tot_death }</h4>
 	</div>
 	<div class="container">
 		<table id="myTable"
@@ -65,7 +66,7 @@ h1 {
 			<thead>
 			<tbody>
 				<c:forEach var="data" items="${alldata}">
-					<tr id="data">
+					<tr id="data" class="clickable-row" data-href='./${data.country}'>
 						<td><c:out value="${data.country}" /></td>
 						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
 						<td><c:out value="${data.total_Deaths}" /></td>
@@ -78,6 +79,13 @@ h1 {
 	<script>
 		$(document).ready(function() {
 			$("#myTable").DataTable();
+		});
+
+     // jQuery for clickable individual country
+		jQuery(document).ready(function($) {
+			$(".clickable-row").click(function() {
+				window.location = $(this).data("href");
+			});
 		});
 	</script>
 </body>
