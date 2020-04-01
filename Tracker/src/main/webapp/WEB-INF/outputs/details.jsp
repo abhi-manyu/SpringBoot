@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 
 <!-- Latest compiled and minified CSS -->
@@ -27,30 +28,32 @@
 th {
 	color: #6011B9;
 	font-size: 20px;
-	background-color: #b3ffcc; 
+	background-color: #b3ffcc;
 }
+
 h1 {
 	text-align: center;
 }
 
-.conf{
-   float: left;
-}
-.death{
-   float: right;
-   color: red;
-   margin-right: 10px;
+.conf {
+	float: left;
 }
 
+.death {
+	float: right;
+	color: red;
+	margin-right: 10px;
+}
 </style>
 </head>
 <body>
+
 	<h1>Tracking</h1>
 	<div class="conf">
-	     <h4>Total confirmed cases: ${ total }</h4>
+		<h4>Total confirmed cases: ${ total }</h4>
 	</div>
 	<div class="death">
-	     <h4>Total deaths : ${ tot_death }</h4>
+		<h4>Total deaths : ${ tot_death }</h4>
 	</div>
 	<div class="container">
 		<table id="myTable"
@@ -60,22 +63,32 @@ h1 {
 					<th class="th-sm">Country</th>
 					<th class="th-sm">total confirmed cases</th>
 					<th class="th-sm">total Deaths</th>
+					<th class="th-sm">total Active</th>
 					<th class="th-sm">total Recovered</th>
 				</tr>
 			<thead>
 			<tbody>
 				<c:forEach var="data" items="${alldata}">
 					<tr id="data">
-						<td><c:out value="${data.country}" /></td>
+						<td>
+						   <a href="./${data.country}">
+						      <c:out value="${data.country}" />
+						   </a>
+						</td>
 						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
 						<td><c:out value="${data.total_Deaths}" /></td>
+						<td><c:out value="${data.activeCase}" /></td>
 						<td><c:out value="${data.total_Recovered}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<h1>All Right Reserved</h1>
+	<h1>All Data source is taken from World Health Organisation</h1>
+	<h1>Reference- JOhn Hompkins university</h1>
 	<script>
+	
 		$(document).ready(function() {
 			$("#myTable").DataTable();
 		});

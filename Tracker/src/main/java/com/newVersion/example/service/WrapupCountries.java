@@ -41,10 +41,10 @@ public class WrapupCountries {
 
 		HttpClient httpClient = HttpClients.createDefault();
 
-		DateTimeFormatter dft = DateTimeFormatter.ofPattern("MM-dd-yyy");
+		DateTimeFormatter dft = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 		LocalDateTime now = LocalDateTime.now().minusDays(1);
 		url += dft.format(now) + ".csv";
-
+        System.out.println(url);
 		HttpGet request = new HttpGet(url);
 		
 		HttpResponse response = httpClient.execute(request);
@@ -56,8 +56,9 @@ public class WrapupCountries {
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
 		for (CSVRecord record : records)
 		{
-			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country/Region"),
+			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country_Region"),
 					Integer.parseInt(record.get(record.size() - 5)), Integer.parseInt(record.get(record.size() - 4)),
+					Integer.parseInt(record.get(record.size() - 2)),
 					Integer.parseInt(record.get(record.size() - 3)));
 
 			allDatas.add(cv_Data);
@@ -70,6 +71,7 @@ public class WrapupCountries {
 				temp.setTotal_Confirmed_Cases(temp.getTotal_Confirmed_Cases() + data.getTotal_Confirmed_Cases());
 				temp.setTotal_Deaths(temp.getTotal_Deaths() + data.getTotal_Deaths());
 				temp.setTotal_Recovered(temp.getTotal_Recovered() + data.getTotal_Recovered());
+				temp.setActiveCase(temp.getActiveCase()+data.getActiveCase());
 				myDatas.put(data.getCountry(), temp);
 
 			}

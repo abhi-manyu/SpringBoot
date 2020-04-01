@@ -46,35 +46,34 @@ public class CoronaTrackingService {
 		DateTimeFormatter dft = DateTimeFormatter.ofPattern("MM-dd-yyy");
 		LocalDateTime now = LocalDateTime.now().minusDays(1);
 		url += dft.format(now) + ".csv";
-
+        System.out.println(url);
 		HttpGet request = new HttpGet(url);
 		String file=null;
 		HttpResponse response=null;
-		try
-		{
 		response = httpClient.execute(request);
 		System.out.println("status code is :"+response.getStatusLine().getStatusCode());
 		HttpEntity entity = response.getEntity();
 		file = EntityUtils.toString(entity);
-		}
-		catch(Exception e)
-		{
-			System.out.println("status code is :"+response.getStatusLine().getStatusCode());
-			System.out.println("can not execute");
-		}
 
 		StringReader csvreader = new StringReader(file);
 
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
-		for (CSVRecord record : records) {
-			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country/Region"),
-					Integer.parseInt(record.get(record.size() - 5)), Integer.parseInt(record.get(record.size() - 4)),
-					Integer.parseInt(record.get(record.size() - 3)));
+		for (CSVRecord record : records)
+		{
+			
+			  CoronaVirusData cv_Data = new
+			  CoronaVirusData(record.get(record.size()-9),
+			  Integer.parseInt(record.get(record.size() - 5)),
+			  Integer.parseInt(record.get(record.size() - 4)),
+			  Integer.parseInt(record.get(record.size() - 2)),
+			  Integer.parseInt(record.get(record.size() - 3)));
+			 
+			//System.out.println(record.get(record.size()-9));
 
 			allDatas.add(cv_Data);
 		}
 
-		myDatas = allDatas;
+		//myDatas = allDatas;
 
 	}
 }
