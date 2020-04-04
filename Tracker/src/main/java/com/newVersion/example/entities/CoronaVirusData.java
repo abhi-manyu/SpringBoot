@@ -9,6 +9,9 @@ public class CoronaVirusData {
 	private int total_Recovered;
 	
 
+	public CoronaVirusData() {
+		// TODO Auto-generated constructor stub
+	}
 	public CoronaVirusData(String country,int total_Confirmed_Cases, int total_Deaths,
 			int activeCase, int total_Recovered) {
 		super();

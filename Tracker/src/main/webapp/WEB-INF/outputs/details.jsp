@@ -62,13 +62,13 @@ h1 {
 				<tr>
 					<th class="th-sm">Country</th>
 					<th class="th-sm">total confirmed cases</th>
-					<th class="th-sm">total Deaths</th>
+					<!-- <th class="th-sm">total Deaths</th>
 					<th class="th-sm">total Active</th>
-					<th class="th-sm">total Recovered</th>
+					<th class="th-sm">total Recovered</th> -->
 				</tr>
 			<thead>
 			<tbody>
-				<c:forEach var="data" items="${alldata}">
+				<c:forEach var="data" items="${data}">
 					<tr id="data">
 						<td>
 						   <a href="./${data.country}">
@@ -76,9 +76,6 @@ h1 {
 						   </a>
 						</td>
 						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
-						<td><c:out value="${data.total_Deaths}" /></td>
-						<td><c:out value="${data.activeCase}" /></td>
-						<td><c:out value="${data.total_Recovered}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
