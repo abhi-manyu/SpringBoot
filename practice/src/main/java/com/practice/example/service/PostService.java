@@ -20,18 +20,6 @@ public class PostService
 	@Autowired
 	private PostRepository postRepo;
 	
-	/*
-	 * @Autowired private CommentRepository commentRepo;
-	 */
-
-	/*
-	 * public PostService() { System.out.println("inside construcotr"); Post post =
-	 * new Post(101, "Abhimanyu", "this is first post");
-	 * System.out.println("object is created"); postRepo.save(post);
-	 * System.out.println("object is saved"); }
-	 */
-	
-	
 	
 	public Iterable<Post> getAllPosts()
 	{

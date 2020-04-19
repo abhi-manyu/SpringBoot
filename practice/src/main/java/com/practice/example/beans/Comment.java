@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Comment {
+public class Comment
+{
 
 	@Id
 	private int commentId;

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.practice.example.beans.Post;
 
 @Repository
-public interface PostRepository extends CrudRepository<Post,Integer>
-{
+public interface PostRepository extends CrudRepository<Post, Integer> {
 
 }

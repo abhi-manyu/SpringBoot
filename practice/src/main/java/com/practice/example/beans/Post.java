@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Post {
+public class Post
+{
 
 	@Id
 	private int postId;

@@ -41,14 +41,9 @@ public class PostController
 	}
 	
 	@DeleteMapping(value="/{postID}")
-	public Iterable<Post> deletePost(@PathVariable int postID)
-	{
+	public Iterable<Post> deletePost(@PathVariable int postID) {
 		return postservice.deletePost(postID);
 	}
-	
-	
-	
-	
 	
 	@GetMapping(value="/{postID}/comments")
 	public List<Comment> getAllComments(@PathVariable int postID)
@@ -56,10 +51,8 @@ public class PostController
 		return postservice.getAllComments(postID);
 	}
 	
-	@PostMapping(value="/{postID}/comments")
-	public List<Comment> addComment(@PathVariable int postID,
-			                                 @RequestBody Comment comment)
-	{
+	@PostMapping(value = "/{postID}/comments")
+	public List<Comment> addComment(@PathVariable int postID, @RequestBody Comment comment) {
 		return postservice.addComment(postID, comment);
 	}
 	

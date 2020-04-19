@@ -44,6 +44,8 @@ public class WrapupCountries {
 		DateTimeFormatter dft = DateTimeFormatter.ofPattern("MM-dd-yyy");
 		LocalDateTime now = LocalDateTime.now().minusDays(1);
 		url += dft.format(now) + ".csv";
+		
+		System.out.println(url);
 
 		HttpGet request = new HttpGet(url);
 		
@@ -56,7 +58,7 @@ public class WrapupCountries {
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvreader);
 		for (CSVRecord record : records)
 		{
-			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country/Region"),
+			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country_Region"),
 					Integer.parseInt(record.get(record.size() - 5)), Integer.parseInt(record.get(record.size() - 4)),
 					Integer.parseInt(record.get(record.size() - 3)));
 
