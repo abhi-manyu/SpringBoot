@@ -1,0 +1,15 @@
+for spring boot parent version 1, if we need to 
+declare external username and password
+
+security.user.name=abhi
+security.user.password=abhi
+
+for spring boot parent version 2, if we need to 
+declare external username and password
+
+spring.security.user.name=abhi
+spring.security.user.password=abhi
+
+ we can access almost all end points using spring boot basic Authentication 
+ in spring boot parent version of 1.*, but not in spring boot parent version 
+ 2.*
