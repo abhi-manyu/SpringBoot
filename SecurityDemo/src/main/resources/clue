@@ -5,7 +5,7 @@ security.user.name=abhi
 security.user.password=abhi
 
 for spring boot parent version 2, if we need to 
-declare external username and password
+declare external username and password0dsAQ	1A2321`7 
 
 spring.security.user.name=abhi
 spring.security.user.password=abhi
