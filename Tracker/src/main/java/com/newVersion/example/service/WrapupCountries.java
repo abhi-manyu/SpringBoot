@@ -59,8 +59,8 @@ public class WrapupCountries {
 		for (CSVRecord record : records)
 		{
 			CoronaVirusData cv_Data = new CoronaVirusData(record.get("Country_Region"),
-					Integer.parseInt(record.get(record.size() - 5)), Integer.parseInt(record.get(record.size() - 4)),
-					Integer.parseInt(record.get(record.size() - 3)));
+					Integer.parseInt(record.get(record.size() - 7)), Integer.parseInt(record.get(record.size() - 6)),
+					Integer.parseInt(record.get(record.size() - 5)));
 
 			allDatas.add(cv_Data);
 		}

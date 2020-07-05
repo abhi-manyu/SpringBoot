@@ -34,7 +34,7 @@ public class CoronaTrackingService {
 		return myDatas;
 	}
 
-	@PostConstruct
+	//@PostConstruct
 
 	@Scheduled(cron = "* * 1 * * *")
 	public void fetchVirusData() throws IOException

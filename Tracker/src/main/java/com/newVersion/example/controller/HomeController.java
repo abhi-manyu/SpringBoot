@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.newVersion.example.entities.CoronaVirusData;
-import com.newVersion.example.service.CoronaTrackingService;
 import com.newVersion.example.service.WrapupCountries;
 
 @RestController
