@@ -17,7 +17,7 @@ public class StudentController {
 	@Autowired
 	private StudentService studServ; 
 	
-	@GetMapping
+	@GetMapping(value="/getallstudents")
 	public List<Student> getAllStudents()
 	{
 		System.out.println("returning all students");
@@ -25,7 +25,7 @@ public class StudentController {
 	}
 	
 	@PostMapping
-	public List<Student> addOneStudent(@RequestBody Student student)
+	public String addOneStudent(@RequestBody Student student)
 	{
 		return studServ.addOneStudent(student);
 	}

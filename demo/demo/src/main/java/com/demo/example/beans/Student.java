@@ -56,4 +56,14 @@ public class Student {
 		this.mark = mark;
 	}
 	
+	@Override
+	public String toString() {
+		return "\n student id : "+studentId+"\n student name : "+studentName
+				+"\n student address : "+studentAddress
+				+"\n student marks : "+mark;
+	}
+	
+	
+	
+	
 }
