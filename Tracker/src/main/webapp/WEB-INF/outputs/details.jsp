@@ -43,6 +43,10 @@ h1 {
 	color: red;
 	margin-right: 10px;
 }
+
+a {
+	color: black;
+}
 </style>
 </head>
 <body>
@@ -66,8 +70,12 @@ h1 {
 			<thead>
 			<tbody>
 				<c:forEach var="data" items="${alldata}">
-					<tr id="data" class="clickable-row" data-href='./${data.country}'>
-						<td><c:out value="${data.country}" /></td>
+					<tr>
+						<td>
+						  <a href = './${data.country}'>
+						    <c:out value="${data.country}" />
+						  </a>
+						</td>
 						<td><c:out value="${data.total_Confirmed_Cases}" /></td>
 						<td><c:out value="${data.total_Deaths}" /></td>
 						<td><c:out value="${data.total_Recovered}" /></td>
@@ -82,10 +90,25 @@ h1 {
 		});
 
      // jQuery for clickable individual country
-		jQuery(document).ready(function($) {
-			$(".clickable-row").click(function() {
-				window.location = $(this).data("href");
+		/* jQuery(document).ready(function($)
+		{
+			$(".clickable-row").
+			           click(function()
+			           {
+				         window.location = $(this).data("href");
+			           });
+		}); */
+		
+		
+		$(document).ready(function() {
+
+			$('#myTable tr').click(function() {
+				var href = $(this).find("a").attr("href");
+				if (href) {
+					window.location = href;
+				}
 			});
+
 		});
 	</script>
 </body>

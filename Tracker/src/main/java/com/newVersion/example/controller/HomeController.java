@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.newVersion.example.entities.CoronaVirusData;
-import com.newVersion.example.service.CoronaTrackingService;
 import com.newVersion.example.service.WrapupCountries;
 
 @RestController
@@ -47,9 +44,10 @@ public class HomeController {
 	    //return null;
 	}
 	@GetMapping(value="/{country}")
-	public String getIndividualContryDetails(@PathVariable String country)
+	public ModelAndView getIndividualContryDetails(@PathVariable String country, Model mod)
 	{
-		return " i m in country : "+country;
+		mod.addAttribute("country",country);
+		return new ModelAndView("country_details");
 	}
 	
 	

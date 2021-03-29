@@ -22,7 +22,7 @@ public class ProductController
 	private Product_Service prod_Service;
 	
     @GetMapping
-    public Iterable<Product> getAllProducts()
+    public Iterable<Product> getAllProducts(@PathVariable ("buyer_Name") String buyerName)
     {
     	return prod_Service.getAllProducts();
     }
@@ -51,4 +51,6 @@ public class ProductController
     {
     	return prod_Service.deleteProduct(id);
     }
+    
+    
 }
